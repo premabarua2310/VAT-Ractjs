@@ -1,4 +1,3 @@
-
 import React, { lazy } from 'react';
 
 const Index = lazy(() => import('../pages/Index'));
@@ -39,7 +38,7 @@ const Costing = lazy(() => import('../pages/GeneralSettings/Costing/index'));
 const CostingEdit = lazy(() => import('../pages/GeneralSettings/Costing/components/EditCosting'));
 const CustomHouse = lazy(() => import('../pages/GeneralSettings/CustomHouse/index'));
 const CustomHouseAdd = lazy(() => import('../pages/GeneralSettings/CustomHouse/components/AddCustomHouse'));
-const CustomHouseEdit = lazy(() => import('../pages/GeneralSettings/CustomHouse/components/EditCustomHouse'));
+const CustomHouseEdit = lazy(() => import('../pages/GeneralSettings/CustomHouse/components/EditCustomHouse'));;
 const HsCode = lazy(() => import('../pages/GeneralSettings/HsCode/index'));
 const CpcCode = lazy(() => import('../pages/GeneralSettings/CpcCode/index'));
 const CpcAdd = lazy(() => import('../pages/GeneralSettings/CpcCode/components/AddCpc'));
@@ -278,8 +277,12 @@ const routes = [
         path: '/pages/settings/authorised_person/add',
         element: <AuthorisedPersonAdd />,
     },
+    // {
+    //     path: '/pages/settings/authorised_person/add',
+    //     element: <AuthorisedPersonAdd />,
+    // },
     {
-        path: '/pages/settings/authorised_person/edit/:id',
+        path: '/pages/settings/authorised_person/edit',
         element: <AuthorisedPersonEdit />,
     },
     {
@@ -299,7 +302,7 @@ const routes = [
         element: <Costing />,
     },
     {
-        path: '/pages/settings/costing/edit/:id',
+        path: '/pages/settings/costing/edit',
         element: <CostingEdit />,
     },
     {
@@ -311,7 +314,7 @@ const routes = [
         element: <CustomHouseAdd />,
     },
     {
-        path: '/pages/settings/custom_house/edit/:id',
+        path: '/pages/settings/custom_house/edit',
         element: <CustomHouseEdit />,
     },
     {

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { DataTableSortStatus } from 'mantine-datatable';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
-import { setPageTitle } from '../../store/themeConfigSlice';
+import { setPageTitle } from '../../../store/themeConfigSlice';
 import IconFile from '../../components/Icon/IconFile';
 import IconTrashLines from '../../components/Icon/IconTrashLines';
 
@@ -27,7 +27,7 @@ const userPermission = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
+        dispatch(setPageTitle('User Permission'));
     });
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];

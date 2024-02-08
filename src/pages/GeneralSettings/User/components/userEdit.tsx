@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../../store/themeConfigSlice';
 import IconFile from '../../../components/Icon/IconFile';
 import IconTrashLines from '../../../components/Icon/IconTrashLines';
 import axios from 'axios';
@@ -31,6 +33,13 @@ const userEdit = () => {
       console.log(err);
     }
   };
+
+  const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('User Edit Table'));
+    });
+
+
   return (
     <div>
       <div className="panel flex items-center justify-between flex-wrap gap-4 ">

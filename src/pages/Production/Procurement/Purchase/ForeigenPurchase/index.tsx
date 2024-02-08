@@ -5,7 +5,7 @@ import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../../../store/themeConfigSlice';
-import IconPlus from '../../../../components/Icon/IconPlus';
+import IconPlus from '../../../../../components/Icon/IconPlus';
 import axios from 'axios';
 
 
@@ -27,8 +27,9 @@ const index = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
+        dispatch(setPageTitle('Foreign Purchase Table'));
     });
+    
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
     const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);

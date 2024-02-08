@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../../store/themeConfigSlice';
 import IconFile from '../../../../components/Icon/IconFile';
 import IconTrashLines from '../../../../components/Icon/IconTrashLines';
 import axios from 'axios';
@@ -67,6 +69,10 @@ const EditCosting = () => {
         }
     };
 
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Edit Costing'));
+    });
 
     return (
         <div>

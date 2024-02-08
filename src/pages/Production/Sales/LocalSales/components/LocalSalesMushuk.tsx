@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../../../store/themeConfigSlice';
 import IconFile from '../../../../../components/Icon/IconFile';
 // import * as $ from 'jquery';
 import { number } from 'yup';
 
 
 const LocalSalesMushuk: React.FC = () => {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Local Sales Mushuk'));
+    });
+
     const navigate = useNavigate();
 
     // Function to get today's date in the format "YYYY-MM-DD"

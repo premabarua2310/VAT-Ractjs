@@ -13,8 +13,13 @@ import { number } from 'yup';
 
 
 const AddLocalSales: React.FC = () => {
-    const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Local Sales Add'));
+    });
+
+    const navigate = useNavigate();
 
     // Function to get today's date in the format "YYYY-MM-DD"
     const getTodayDate = () => {

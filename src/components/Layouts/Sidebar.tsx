@@ -16,7 +16,7 @@ import IconMenuUsers from '../Icon/Menu/IconMenuUsers';
 import IconMenuAuthentication from '../Icon/Menu/IconMenuAuthentication';
 import IconMenuScrumboard from '../Icon/Menu/IconMenuScrumboard';
 import IconMenuComponents from '../Icon/Menu/IconMenuScrumboard';
-import logo from "../../assets/images/auth/logo.png"
+import logo from "../../assets/images/auth/BMITVATicon.png";
 
 const Sidebar = () => {
     const [currentMenu, setCurrentMenu] = useState<string>('');

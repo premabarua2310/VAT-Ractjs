@@ -1,18 +1,9 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { useState, Fragment, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
-// import { Dialog, Transition } from '@headlessui/react';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
-import { setPageTitle } from '../../../store/themeConfigSlice';
-// import IconFile from '../../../components/Icon/IconFile';
-// import IconPlus from '../../../components/Icon/IconPlus';
-// import IconEdit from '../../../components/Icon/IconEdit';
-// import IconSettings from '../../../components/Icon/IconSettings';
-// import IconTrashLines from '../../../components/Icon/IconTrashLines';
-// import IconX from '../../../components/Icon/IconX';
-// import IconSend from '../../../components/Icon/IconSend';
+import { setPageTitle } from '../../../../store/themeConfigSlice';
 import axios from 'axios';
 
 
@@ -34,7 +25,7 @@ const col = ['nidImage', 'userID', 'email', 'phone', 'nid', 'terminationDate', '
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
+        dispatch(setPageTitle('User View Table'));
     });
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../../store/themeConfigSlice';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import IconFile from '../../../../components/Icon/IconFile';
 import IconTrashLines from '../../../../components/Icon/IconTrashLines';
@@ -43,7 +45,6 @@ const EditCpc = () => {
             const bearer = JSON.parse(token);
             const headers = { Authorization: `Bearer ${bearer}` }
 
-
             try {
                 console.log(costing);
                 await axios.put(`http://localhost:8080/bmitvat/api/cpc/update_customhouse/${params.id}`, costing, { headers })
@@ -62,6 +63,11 @@ const EditCpc = () => {
             }
         }
     };
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Cpc Edit'));
+    });
 
 
     return (

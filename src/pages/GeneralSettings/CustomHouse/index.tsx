@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, NavLink, useNavigate, useParams  }  from 'react-router-dom';
+import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import { useEffect, useState } from 'react';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../store/themeConfigSlice';
-import IconPlus from '../../components/Icon/IconPlus';
-import IconEdit from '../../components/Icon/IconEdit';
+import IconPlus from '../../../components/Icon/IconPlus';
+import IconEdit from '../../../components/Icon/IconEdit';
 import axios from 'axios';
 
 
@@ -26,38 +26,38 @@ const rowData = [
         customHouseAddress: 'Chattogram',
         action: '',
     },
-    
+
 ];
 
 
 const index = () => {
 
-    const [customHouseName,setCustomHouseName]=useState("");
-    const [customHouseCode,setCustomHouseCode]=useState("");
-    const [customHouseAddress,setCustomHouseAddress]=useState("");
-    const [action,setAction]=useState("");
-      const params = useParams();
-      const navigate = useNavigate();
+    const [customHouseName, setCustomHouseName] = useState("");
+    const [customHouseCode, setCustomHouseCode] = useState("");
+    const [customHouseAddress, setCustomHouseAddress] = useState("");
+    const [action, setAction] = useState("");
+    const params = useParams();
+    const navigate = useNavigate();
 
-      const getCustomHousetDetails = async()=>{
+    const getCustomHousetDetails = async () => {
         const token = localStorage.getItem('Token');
-        if(token){
+        if (token) {
             const bearer = JSON.parse(token);
-            const headers= { Authorization: `Bearer ${bearer}` }
+            const headers = { Authorization: `Bearer ${bearer}` }
 
-        await axios.get(`http://localhost:8080/bmitvat/api/unit/edit/${params.id}`,{headers})
-            .then((response) => {
-                // setInitialRecords(response.data);
-                const data = response.data;
-                console.log(data);
-                setCustomHouseName(data.customHouseName)
-                setCustomHouseCode(data.customHouseCode)
-                setCustomHouseAddress(data.customHouseAddress)
-                setAction(data.action)
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
+            await axios.get(`http://localhost:8080/bmitvat/api/unit/edit/${params.id}`, { headers })
+                .then((response) => {
+                    // setInitialRecords(response.data);
+                    const data = response.data;
+                    console.log(data);
+                    setCustomHouseName(data.customHouseName)
+                    setCustomHouseCode(data.customHouseCode)
+                    setCustomHouseAddress(data.customHouseAddress)
+                    setAction(data.action)
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                });
         }
 
         // let result = await axios.get( `http://localhost:8080/bmitvat/api/unit/${params.id}`);
@@ -67,16 +67,13 @@ const index = () => {
         // setAbbr(data.abbr)
         // setStatus(data.status)
         // }
-        }
-
-
-
+    }
 
 
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
+        dispatch(setPageTitle('Custom House Table'));
     });
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
@@ -125,7 +122,7 @@ const index = () => {
             <div className="panel flex items-center justify-between flex-wrap gap-4 text-black">
                 <h2 className="text-xl font-bold">Custom House</h2>
                 <div className="flex items-center flex-wrap gap-3">
-                    <Link to="/pages/customHouse/custom/add" className="btn btn-primary gap-1">
+                    <Link to="/pages/settings/custom_house/add" className="btn btn-primary gap-1">
                         <IconPlus />
                         Add New
                     </Link>
@@ -133,9 +130,9 @@ const index = () => {
             </div>
 
             <div className="panel mt-6">
-                
+
                 <div className="datatables">
-                <DataTable
+                    <DataTable
                         highlightOnHover
                         className="whitespace-nowrap table-hover"
                         records={recordsData}
@@ -151,7 +148,7 @@ const index = () => {
                                 textAlignment: 'center',
                                 render: ({ action }) => (
                                     <div className="flex gap-4 items-center w-max mx-auto">
-                                        <NavLink to="/pages/customHouse/custom/edit" className="flex btn btn-outline-primary btn-sm m-1 p-2">
+                                        <NavLink to="/pages/settings/custom_house/edit" className="flex btn btn-outline-primary btn-sm m-1 p-2">
                                             <IconEdit className="w-4.5 h-4.5 mr-2" />
                                             Edit
                                         </NavLink>

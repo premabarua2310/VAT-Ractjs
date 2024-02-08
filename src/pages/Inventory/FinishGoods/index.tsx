@@ -39,7 +39,7 @@ const index = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setPageTitle('Export Table'));
+    dispatch(setPageTitle('Finish Goods Table'));
   });
   const [page, setPage] = useState(1);
   const PAGE_SIZES = [10, 20, 30, 50, 100];
@@ -163,7 +163,7 @@ const index = () => {
                     </div>
                     <div>
                       <label htmlFor="browserLname">Opening Date</label>
-                      <input id="browserLname" type="date" placeholder="" className="form-input" onChange={e => setDate(e.target.value)} required />
+                      <input id="browserLname" type="date" placeholder="" className="form-input" required />
                     </div>
 
                   </div>

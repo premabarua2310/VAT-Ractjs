@@ -1,5 +1,7 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../../store/themeConfigSlice';
 import IconFile from '../../../components/Icon/IconFile';
 import IconTrashLines from '../../../components/Icon/IconTrashLines';
 import axios from 'axios';
@@ -13,9 +15,9 @@ const addUnit = () => {
 
   useEffect(() => {
     handleSubmit;
-}, []);
+  }, []);
 
-  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const units = {
       unitName: unitName,
       abbr: unitAbbr,
@@ -25,28 +27,30 @@ const addUnit = () => {
     }
 
     const token = localStorage.getItem('Token');
-    if(token){
+    if (token) {
       const bearer1 = JSON.parse(token);
-    const headers= { Authorization: `Bearer ${bearer1}` }
+      const headers = { Authorization: `Bearer ${bearer1}` }
 
-    try {
-       await axios.post("http://localhost:8080/bmitvat/api/unit/add-unit", units, {headers})
-        .then(function (response) {
-          if(response){
-            navigate("/pages/settings/unit");
-          }else{
-            navigate("/pages/settings/unit/add");
-          }
-        })
+      try {
+        await axios.post("http://localhost:8080/bmitvat/api/unit/add-unit", units, { headers })
+          .then(function (response) {
+            if (response) {
+              navigate("/pages/settings/unit");
+            } else {
+              navigate("/pages/settings/unit/add");
+            }
+          })
 
-    } catch (err) {
-      console.log(err);
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }
-
-  
   };
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setPageTitle('Unit Add'));
+  });
 
   return (
     <div>

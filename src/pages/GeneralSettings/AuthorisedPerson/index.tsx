@@ -1,16 +1,13 @@
 import React from 'react';
-import { Link, NavLink, useNavigate }  from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import { useEffect, useState, Fragment } from 'react';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../store/themeConfigSlice';
 import IconPlus from '../../../components/Icon/IconPlus';
-
 import IconEdit from '../../../components/Icon/IconEdit';
 import axios from 'axios';
-
-
 
 
 const index = () => {
@@ -20,31 +17,30 @@ const index = () => {
     useEffect(() => {
         const token = localStorage.getItem('Token');
 
-        if(token){
-            const bearer =  token.slice(1,-1); 
+        if (token) {
+            const bearer = token.slice(1, -1);
             // const bearer1 = JSON.parse(token);
 
-        const headers= { Authorization: `Bearer ${bearer}` }
+            const headers = { Authorization: `Bearer ${bearer}` }
 
-        axios.get('http://localhost:8080/bmitvat/api/authorised_person/all_person',{headers})
-            .then((response) => {
-                setInitialRecords(response.data);
+            axios.get('http://localhost:8080/bmitvat/api/authorised_person/all_person', { headers })
+                .then((response) => {
+                    setInitialRecords(response.data);
 
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
 
-            });
+                });
 
         }
     }, []);
 
-
-
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
+        dispatch(setPageTitle('Authorised Person Table'));
     });
+    
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
     const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
@@ -84,11 +80,11 @@ const index = () => {
         setInitialRecords(sortStatus.direction === 'desc' ? data.reverse() : data);
         setPage(1);
     }, [sortStatus]);
- 
- 
-   
 
-   
+
+
+
+
 
     return (
         <div>
@@ -101,13 +97,10 @@ const index = () => {
                     </Link>
                 </div>
             </div>
-
- 
-
             <div className="panel mt-6">
-                
+
                 <div className="datatables">
-                <DataTable
+                    <DataTable
                         highlightOnHover
                         className="whitespace-nowrap table-hover"
                         records={recordsData}
@@ -116,8 +109,10 @@ const index = () => {
                             { accessor: 'personName', title: 'Authorised Person Name', sortable: true },
                             { accessor: 'description', title: 'Person Description', sortable: true },
                             { accessor: 'phoneNumber', title: 'Person Phone Number', sortable: true },
-                            { accessor: 'image', title: 'Person Signature', sortable: false,
-                             render: ({ signature })=>( <img src={'/assets/images/authorised_person/'+ signature} className="h-16 w-40" />) },
+                            {
+                                accessor: 'image', title: 'Person Signature', sortable: false,
+                                render: ({ signature }) => (<img src={'/assets/images/authorised_person/' + signature} className="h-16 w-40" />)
+                            },
                             {
                                 accessor: 'action',
                                 title: 'Action',

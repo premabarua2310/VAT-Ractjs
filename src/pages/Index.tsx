@@ -24,7 +24,7 @@ import IconMultipleForwardRight from '../components/Icon/IconMultipleForwardRigh
 const Index = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Sales Admin'));
+        dispatch(setPageTitle('Dashboard Admin'));
     });
     const isDark = useSelector((state: IRootState) => state.themeConfig.theme === 'dark' || state.themeConfig.isDarkMode);
     const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
@@ -416,6 +416,8 @@ const Index = () => {
 
             <div className="pt-5">
                 <div className="grid xl:grid-cols-3 gap-6 mb-6">
+
+                    {/*--------- Sales By Category --------*/}
                     <div className="panel h-full xl:col-span-2">
                         <div className="flex items-center justify-between dark:text-white-light mb-5">
                             <h5 className="font-semibold text-lg">Revenue</h5>
@@ -474,6 +476,8 @@ const Index = () => {
                 </div>
 
                 <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
+
+                    {/*--------- Daily Sales --------*/}
                     <div className="panel h-full sm:col-span-2 xl:col-span-1">
                         <div className="flex items-center mb-5">
                             <h5 className="font-semibold text-lg dark:text-white-light">
@@ -498,6 +502,7 @@ const Index = () => {
                             </div>
                         </div>
                     </div>
+                    {/*--------- Summary --------*/}
                     <div className="panel h-full">
                         <div className="flex items-center justify-between dark:text-white-light mb-5">
                             <h5 className="font-semibold text-lg">Summary</h5>
@@ -572,6 +577,7 @@ const Index = () => {
                         </div>
                     </div>
 
+                    {/*--------- Total Orders --------*/}
                     <div className="panel h-full p-0">
                         <div className="flex items-center justify-between w-full p-5 absolute">
                             <div className="relative">
@@ -596,7 +602,9 @@ const Index = () => {
                         </div>
                     </div>
                 </div>
-                <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
+
+                {/*--------- Recent Activities --------*/}
+                {/* <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
                     <div className="panel h-full sm:col-span-2 xl:col-span-1 pb-0">
                         <h5 className="font-semibold text-lg dark:text-white-light mb-5">Recent Activities</h5>
                         <PerfectScrollbar className="relative h-[290px] ltr:pr-3 rtl:pl-3 ltr:-mr-3 rtl:-ml-3 mb-4">
@@ -869,9 +877,11 @@ const Index = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-6">
+
+                    {/*--------- Recent Orders --------*/}
                     <div className="panel h-full w-full">
                         <div className="flex items-center justify-between mb-5">
                             <h5 className="font-semibold text-lg dark:text-white-light">Recent Orders</h5>
@@ -973,6 +983,7 @@ const Index = () => {
                         </div>
                     </div>
 
+                    {/*--------- Top Selling Product --------*/}
                     <div className="panel h-full w-full">
                         <div className="flex items-center justify-between mb-5">
                             <h5 className="font-semibold text-lg dark:text-white-light">Top Selling Product</h5>

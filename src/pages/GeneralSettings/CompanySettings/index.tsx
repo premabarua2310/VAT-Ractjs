@@ -1,6 +1,16 @@
 import React from 'react';
+import { useEffect } from 'react';
 import IconFile from '../../components/Icon/IconFile';
 import IconTrashLines from '../../components/Icon/IconTrashLines';
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../store/themeConfigSlice';
+
+
+const dispatch = useDispatch();
+useEffect(() => {
+    dispatch(setPageTitle('Company Settings'));
+});
+
 
 const index = () => {
 

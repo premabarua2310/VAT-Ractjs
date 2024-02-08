@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../../store/themeConfigSlice';
 import { useNavigate } from "react-router-dom";
 import IconFile from '../../../../components/Icon/IconFile';
-import IconTrashLines from '../../../../components/Icon/IconTrashLines';
 import axios from 'axios';
 
 
@@ -42,8 +42,12 @@ const AddCpc = () => {
                 console.log(err);
             }
         }
-
     };
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Cpc Add'));
+    });
 
 
     return (

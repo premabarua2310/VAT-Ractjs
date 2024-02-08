@@ -1,6 +1,6 @@
-import { Link, NavLink } from 'react-router-dom';
+import React from 'react';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState } from 'react';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../../store/themeConfigSlice';
@@ -8,6 +8,11 @@ import axios from 'axios';
 
 
 const TableProductionBOM = () => {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Production BOM Table'));
+    });
 
     const col = ['serial', 'materialName', 'materialRate', 'materialQuantity', 'materialWastage', 'totalMaterial', 'totalPrice'];
     useEffect(() => {
@@ -22,10 +27,6 @@ const TableProductionBOM = () => {
             });
     }, []);
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
-    });
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
     const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);

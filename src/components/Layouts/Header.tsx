@@ -11,6 +11,7 @@ import IconUser from '../Icon/IconUser';
 import IconLogout from '../Icon/IconLogout';
 import { jwtDecode } from "jwt-decode";
 import logo from "../../assets/images/user-profile.jpeg";
+import Logo from "../../assets/images/auth/BMITVATicon.png";
 
 const Header = () => {
     const [username, setName] = useState("");
@@ -55,7 +56,6 @@ const Header = () => {
 
         // For Auto Refresh
         const interval = setInterval(() => {
-
             const token = localStorage.getItem('Token');
             if (token) {
                 const jwt = jwtDecode(token);
@@ -68,17 +68,12 @@ const Header = () => {
                     } else {
                         console.log("You are Valid")
                     }
-
                 }
-
             } else {
                 navigate("/")
             }
         }, 20 * 10000);
         return () => clearInterval(interval);
-
-
-
     }, [location]);
 
     const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
@@ -96,14 +91,13 @@ const Header = () => {
     }
 
 
-
     return (
         <header className={`z-40 ${themeConfig.semidark && themeConfig.menu === 'horizontal' ? 'dark' : ''}`}>
             <div className="shadow-sm">
                 <div className="relative bg-white flex w-full items-center px-5 py-2.5 dark:bg-black">
                     <div className="horizontal-logo flex lg:hidden justify-between items-center ltr:mr-2 rtl:ml-2">
                         <Link to="/" className="main-logo flex items-center shrink-0">
-                            <img className="w-8 ltr:-ml-1 rtl:-mr-1 inline" src="/assets/images/auth/bmitvat.png" alt="logo" />
+                            <img className="w-15 ltr:-ml-1 rtl:-mr-1 inline" src={Logo} alt="logo" />
                             <span className="text-2xl ltr:ml-1.5 rtl:mr-1.5  font-semibold  align-middle hidden md:inline dark:text-white-light transition-all duration-300"></span>
                         </Link>
                         <button
@@ -155,8 +149,11 @@ const Header = () => {
                                         <div className="flex items-center px-4 py-4">
                                             <img className="rounded-md w-10 h-10 object-cover" src={logo + userprofile} alt="userProfile" />
                                             <div className="ltr:pl-4 rtl:pr-4 truncate">
-                                                <h4 className="text-base">
-                                                    {username}
+                                                <h4 className="text-base text-black">
+                                                    {/* {username} */}
+                                                    <h4 className="text-base">
+                                                    John Doe
+                                                </h4>
                                                 </h4>
                                             </div>
                                         </div>

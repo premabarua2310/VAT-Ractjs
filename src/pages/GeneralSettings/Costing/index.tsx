@@ -8,12 +8,12 @@ import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../store/themeConfigSlice';
 import IconFile from '../../components/Icon/IconFile';
 import IconPrinter from '../../../components/Icon/IconPrinter';
-import IconEdit from '../../components/Icon/IconEdit';
+import IconEdit from '../../../components/Icon/IconEdit';
 import IconTrashLines from '../../components/Icon/IconTrashLines';
 import IconUpload from '../../../components/Icon/IconUpload';
 import IconDownload from '../../../components/Icon/IconDownload';
-import IconX from '../../components/Icon/IconX';
-import IconSend from '../../components/Icon/IconSend';
+import IconX from '../../../components/Icon/IconX';
+import IconSend from '../../../components/Icon/IconSend';
 import axios from 'axios';
 import ImageUploading, { ImageListType } from 'react-images-uploading';
 import CostingAdd from './components/AddCosting';
@@ -41,10 +41,9 @@ const rowData = [
 
 const index = () => {
 
-
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
+        dispatch(setPageTitle('Costing Table'));
     });
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
@@ -192,9 +191,7 @@ const index = () => {
 
                                                     <div className="title text-indigo-500 uppercase">or drop files here</div>
                                                 </div>
-
                                             </div>
-
 
                                             <div className="flex justify-end items-center mt-8">
                                                 <button type="button" className="btn btn-outline-success" onClick={() => setAddFileModal(false)}>
@@ -251,7 +248,7 @@ const index = () => {
                                     textAlignment: 'center',
                                     render: ({ action }) => (
                                         <div className="flex gap-4 items-center w-max mx-auto">
-                                            <NavLink to="/pages/costing/edit" className="flex btn btn-outline-primary btn-sm m-1 p-2">
+                                            <NavLink to="/pages/settings/costing/edit" className="flex btn btn-outline-primary btn-sm m-1 p-2">
                                                 <IconEdit className="w-4.5 h-4.5 mr-2" />
                                                 Edit
                                             </NavLink>
@@ -273,8 +270,6 @@ const index = () => {
                     </div>
                 </div>
                 {/*-------------- Costing list end -------------*/}
-
-
             </div>
         </div>
     );

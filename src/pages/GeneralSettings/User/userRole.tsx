@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { DataTableSortStatus } from 'mantine-datatable';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
-import { setPageTitle } from '../../store/themeConfigSlice';
+import { setPageTitle } from '../../../store/themeConfigSlice';
 import IconFile from '../../components/Icon/IconFile';
 import IconTrashLines from '../../components/Icon/IconTrashLines';
 

@@ -1,9 +1,8 @@
-import React, { ChangeEvent, ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler } from 'react';
 import { useEffect, useState, useRef } from 'react';
 import IconFile from '../../../../../components/Icon/IconFile';
 import IconTrashLines from '../../../../../components/Icon/IconTrashLines';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { DataTable, DataTableSortStatus } from 'mantine-datatable';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../../../store/themeConfigSlice';
 import sortBy from 'lodash/sortBy';
@@ -13,8 +12,13 @@ import { number } from 'yup';
 
 
 const AddLocalPurchase: React.FC = () => {
-    const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Receive VDS Add'));
+    });
+
+    const navigate = useNavigate();
 
     // Function to get today's date in the format "YYYY-MM-DD"
     const getTodayDate = () => {

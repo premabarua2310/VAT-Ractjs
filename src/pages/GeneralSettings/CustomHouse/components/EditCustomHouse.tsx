@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setPageTitle } from '../../../../store/themeConfigSlice';
 import IconFile from '../../../components/Icon/IconFile';
 import IconTrashLines from '../../../components/Icon/IconTrashLines';
 
 const EditCustomHouse = () => {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Custom House Edit'));
+    });
 
     return (
         <div>
