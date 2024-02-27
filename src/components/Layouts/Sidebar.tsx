@@ -16,7 +16,7 @@ import IconMenuUsers from '../Icon/Menu/IconMenuUsers';
 import IconMenuAuthentication from '../Icon/Menu/IconMenuAuthentication';
 import IconMenuScrumboard from '../Icon/Menu/IconMenuScrumboard';
 import IconMenuComponents from '../Icon/Menu/IconMenuScrumboard';
-import logo from "../../assets/images/auth/BMITVATicon.png";
+
 
 const Sidebar = () => {
     const [currentMenu, setCurrentMenu] = useState<string>('');
@@ -63,7 +63,7 @@ const Sidebar = () => {
                 <div className="bg-white dark:bg-black h-full">
                     <div className="flex justify-between items-center px-4 py-3">
                         <NavLink to="/index" className="main-logo flex items-center shrink-0">
-                            <img className="w-18 ml-[5px] flex-none" src={logo} alt="logo" />
+                            <img className="w-18 ml-[5px] flex-none" src="/assets/images/auth/BMITVATicon.png" alt="logo" />
                             {/* <span className="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">{t('VRISTO')}</span> */}
                         </NavLink>
                         <button
@@ -287,7 +287,7 @@ const Sidebar = () => {
                                             <AnimateHeight duration={300} height={errorSubMenu ? 'auto' : 0}>
                                                 <ul className="sub-menu text-gray-500">
                                                     <li>
-                                                        <a href="/pages/error404" target="_blank">{t('General Mushak')}</a>
+                                                        <a href="/pages/report/production/index" >{t('General Mushak')}</a>
                                                     </li>
                                                     <li>
                                                         <a href="/pages/error404" target="_blank">{t('Treasury Challan')}</a>

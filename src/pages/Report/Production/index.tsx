@@ -5,8 +5,8 @@ import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../store/themeConfigSlice';
-import IconPlus from '../../components/Icon/IconPlus';
-import IconEdit from '../../components/Icon/IconEdit';
+import IconPlus from '../../../components/Icon/IconPlus';
+import IconEdit from '../../../components/Icon/IconEdit';
 import axios from 'axios';
 
 
@@ -99,13 +99,8 @@ const index = () => {
     return (
         <div>
             <div className="panel flex items-center justify-between flex-wrap gap-4 text-black">
-                <h2 className="text-xl font-bold">WIP Production</h2>
-                <div className="flex items-center flex-wrap gap-3">
-                    <Link to="/pages/production/production_WIP/add" className="btn btn-primary gap-1">
-                        <IconPlus />
-                        Add New
-                    </Link>
-                </div>
+                <h2 className="text-xl font-bold">Generate Mushak</h2>
+
             </div>
 
             <div className="pt-5">
@@ -113,32 +108,40 @@ const index = () => {
                 <div className="panel col-span-3 " id="stack_form">
                     <div className="flex md:items-center justify-between md:flex-row flex-col mb-4.5 gap-5">
                         <div className="flex items-center justify-between mb-3">
-                            <h5 className="font-semibold text-lg dark:text-white-light">WIP Production List</h5>
+                            <h5 className="font-semibold text-lg dark:text-white-light">Generate Mushak List</h5>
                         </div>
-                        <input type="search" className="form-input w-auto mb-3 " placeholder="Search..." />
                     </div>
-                    <div className="datatables">
-                        <DataTable
-                            highlightOnHover
-                            className="whitespace-nowrap table-hover"
-                            records={recordsData}
-                            columns={[
-                                { accessor: 'invoiceID', title: 'Production Invoice ID', sortable: true },
-                                { accessor: 'itemName', title: 'Item Name', sortable: true },
-                                { accessor: 'productionDate', title: 'Production Date', sortable: true },
-                                { accessor: 'productionQuantity', title: 'Production Quantity', sortable: true },
-                            ]}
-                            totalRecords={initialRecords.length}
-                            recordsPerPage={pageSize}
-                            page={page}
-                            onPageChange={(p) => setPage(p)}
-                            recordsPerPageOptions={PAGE_SIZES}
-                            onRecordsPerPageChange={setPageSize}
-                            sortStatus={sortStatus}
-                            onSortStatusChange={setSortStatus}
-                            minHeight={200}
-                            paginationText={({ from, to, totalRecords }) => `Showing  ${from} to ${to} of ${totalRecords} entries`}
-                        />
+                    <div className="flex items-center flex-wrap gap-4">
+                        <button className="bg-blue-700 hover:bg-blue-500 text-white font-bold py-3 px-20 rounded">
+                        <Link to="/pages/report/production/generate_mushak61">
+                                General Mushak- 6.1
+                            </Link>
+                        </button>
+                        <button className="bg-blue-700 hover:bg-blue-500 text-white font-bold py-3 px-20 rounded">
+                        <Link to="/pages/report/production/generate_mushak62">
+                                General Mushak- 6.2
+                            </Link>
+                        </button>
+                        <button className="bg-blue-700 hover:bg-blue-500 text-white font-bold py-3 px-20 rounded">
+                        <Link to="/pages/report/production/generate_mushak62">
+                                Generate- 6.10
+                            </Link>
+                            </button>
+                        <button className="bg-blue-700 hover:bg-blue-500 text-white font-bold py-3 px-20 rounded">
+                            <Link to="/pages/production/generate_mushak62">
+                                Sub-Form-ক
+                            </Link>
+                            </button>
+                        <button className="bg-blue-700 hover:bg-blue-500 text-white font-bold py-3 px-24 rounded">
+                            <Link to="/pages/production/generate_mushak62">
+                                Sub-Form-ক
+                            </Link>
+                            </button>
+                        <button className="bg-blue-700 hover:bg-blue-500 text-white font-bold py-3 px-16 rounded">
+                            <Link to="/pages/production/generate_mushak62">
+                                General Mushak- 9.1
+                            </Link>
+                            </button>
                     </div>
                 </div>
                 {/*-------------- User list end -------------*/}

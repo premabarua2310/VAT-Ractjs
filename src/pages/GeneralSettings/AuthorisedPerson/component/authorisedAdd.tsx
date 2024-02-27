@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../../store/themeConfigSlice';
 import IconFile from '../../../../components/Icon/IconFile';
 import IconTrashLines from '../../../../components/Icon/IconTrashLines';
+import IconPlus from '../../../../components/Icon/IconPlus';
 import axios from 'axios';
 
 
@@ -64,10 +65,14 @@ const personAdd = () => {
   return (
     <div>
       <div id="form">
+      <div className="panel flex items-center justify-between flex-wrap gap-4 text-black">
+                <h2 className="text-xl font-bold">Authorised Person</h2>
+
+            </div>
+        <div className="panel mt-6">
         <div className="flex items-center justify-between mb-6">
-          <h5 className="font-semibold text-lg dark:text-white-light">Authorised Person Add</h5>
-        </div>
-        <div className="mb-5 ">
+                    <h5 className="font-semibold text-lg dark:text-white-light">Authorised Person Add</h5>
+                </div>
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="flex sm:flex-row flex-col">
               <label htmlFor="PersonName" className="mb-0 sm:w-1/4 sm:ltr:mr-1 rtl:ml-2" >

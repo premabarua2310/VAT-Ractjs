@@ -5,14 +5,12 @@ import IconTrashLines from '../../components/Icon/IconTrashLines';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../store/themeConfigSlice';
 
-
-const dispatch = useDispatch();
-useEffect(() => {
-    dispatch(setPageTitle('Company Settings'));
-});
-
-
 const index = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(setPageTitle('Company Settings'));
+    });
+    
 
     return (
         <div>

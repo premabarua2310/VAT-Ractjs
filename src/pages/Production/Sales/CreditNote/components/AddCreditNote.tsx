@@ -13,13 +13,8 @@ import { number } from 'yup';
 
 
 const AddCreditNote: React.FC = () => {
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Credit Note Add'));
-    });
-
     const navigate = useNavigate();
+
 
     // Function to get today's date in the format "YYYY-MM-DD"
     const getTodayDate = () => {

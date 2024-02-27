@@ -1,34 +1,34 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { DataTable, DataTableSortStatus } from 'mantine-datatable';
+import IconFile from '../../../components/Icon/IconFile';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
-import { setPageTitle } from '../../../store/themeConfigSlice';
-import IconPlus from '../../components/Icon/IconPlus';
-import IconEdit from '../../components/Icon/IconEdit';
+import { setPageTitle } from '../../../../store/themeConfigSlice';
+import { DataTable, DataTableSortStatus } from 'mantine-datatable';
+import IconEdit from '../../../components/Icon/IconEdit';
+import IconDownload from '../../../Components/Icon/IconDownload';
 import axios from 'axios';
 
 
 const index = () => {
 
-    const col = ['bomNo', 'hsCode', 'name', 'unit', 'salesPrice', 'status', 'action'];
+    const col = ['month', 'itemName', 'action'];
     useEffect(() => {
         axios.get('http://localhost:8080/bmitvat/api/v1/unit/allunits')
             .then((response) => {
                 setInitialRecords(response.data);
-
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
-
             });
     }, []);
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
+        dispatch(setPageTitle('General Mushak 6.2'));
     });
+
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
     const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
@@ -52,12 +52,8 @@ const index = () => {
         setInitialRecords(() => {
             return initialRecords.filter((item: any) => {
                 return (
-                    item.bomNo.toString().includes(search.toLowerCase()) ||
-                    item.hsCode.toLowerCase().includes(search.toLowerCase()) ||
-                    item.name.toLowerCase().includes(search.toLowerCase()) ||
-                    item.unit.toLowerCase().includes(search.toLowerCase()) ||
-                    item.salesPrice.toLowerCase().includes(search.toLowerCase()) ||
-                    item.status.tooltip.toLowerCase().includes(search.toLowerCase()) ||
+                    item.month.toLowerCase().includes(search.toLowerCase()) ||
+                    item.itemName.toLowerCase().includes(search.toLowerCase()) ||
                     item.action.toLowerCase().includes(search.toLowerCase())
                 );
             });
@@ -69,13 +65,12 @@ const index = () => {
         setInitialRecords(sortStatus.direction === 'desc' ? data.reverse() : data);
         setPage(1);
     }, [sortStatus]);
-    const header = ['BOM-No', 'HS-Code', 'Name', 'Unit', 'Sales Price', 'Status', 'Action'];
+    const header = ['Month', 'Item Name', 'Action'];
 
     // const changeValue = (e: any) => {
     //     const { value, id } = e.target;
     //     setParams({ ...params, [id]: value });
     // };
-
 
     const [addContactModal, setAddContactModal] = useState<any>(false);
 
@@ -95,38 +90,67 @@ const index = () => {
         setAddContactModal(true);
     };
 
-
     return (
         <div>
-            <div className="panel flex items-center justify-between flex-wrap gap-4 text-black">
-                <h2 className="text-xl font-bold">WIP Production</h2>
-                <div className="flex items-center flex-wrap gap-3">
-                    <Link to="/pages/production/production_WIP/add" className="btn btn-primary gap-1">
-                        <IconPlus />
-                        Add New
-                    </Link>
+            <div className="panel flex items-center justify-between flex-wrap gap-4 text-black mb-5">
+                <h2 className="text-xl font-bold">Generate Mushak 6.1</h2>
+            </div>
+
+            <div className="pt-5 gap-2">
+                <div className="panel mb-5">
+                    <form className="flex gap-4" >
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label htmlFor="browserLname">Select Date</label>
+                                <input id="browserLname" type="date" placeholder="" className="form-input" required />
+                            </div>
+                            <div>
+                                <label htmlFor="gridState">Items</label>
+                                <select id="gridState" className="form-select text-dark col-span-4 text-sm" required >
+                                    <option>Select Item</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" className="h-10 mt-6 gap-4 btn btn-success" >
+                            <IconFile />
+                            Submit
+                        </button>
+                    </form>
                 </div>
             </div>
 
             <div className="pt-5">
-                {/*----------------- User list start ---------------*/}
-                <div className="panel col-span-3 " id="stack_form">
-                    <div className="flex md:items-center justify-between md:flex-row flex-col mb-4.5 gap-5">
-                        <div className="flex items-center justify-between mb-3">
-                            <h5 className="font-semibold text-lg dark:text-white-light">WIP Production List</h5>
-                        </div>
-                        <input type="search" className="form-input w-auto mb-3 " placeholder="Search..." />
-                    </div>
+                {/*----------------- Generate Mushak Table ---------------*/}
+                <div className="panel mt-6">
                     <div className="datatables">
                         <DataTable
                             highlightOnHover
                             className="whitespace-nowrap table-hover"
                             records={recordsData}
                             columns={[
-                                { accessor: 'invoiceID', title: 'Production Invoice ID', sortable: true },
+                                { accessor: 'month', title: 'Month', sortable: true },
                                 { accessor: 'itemName', title: 'Item Name', sortable: true },
-                                { accessor: 'productionDate', title: 'Production Date', sortable: true },
-                                { accessor: 'productionQuantity', title: 'Production Quantity', sortable: true },
+                                {
+                                    accessor: 'action',
+                                    title: 'Action',
+                                    sortable: false,
+                                    textAlignment: 'center',
+                                    render: ({ id }) => (
+                                        <div className="flex gap-4 items-center w-max mx-auto">
+                                            <NavLink to={"/pages/report/production/generate_mushak62/view"} className="flex btn btn-outline-primary btn-sm m-1 p-2">
+                                                <IconEdit className="w-4.5 h-4.5 mr-2" />
+                                                View
+                                            </NavLink>
+                                            <NavLink to={"/pages/report/production/generate_mushak62/down"} className="flex btn btn-outline-primary btn-sm m-1 p-2">
+                                                <IconDownload className="w-4.5 h-4.5 mr-2" />
+                                                Download
+                                            </NavLink>
+                                        </div>
+                                    ),
+                                },
                             ]}
                             totalRecords={initialRecords.length}
                             recordsPerPage={pageSize}
@@ -141,9 +165,6 @@ const index = () => {
                         />
                     </div>
                 </div>
-                {/*-------------- User list end -------------*/}
-
-
             </div>
         </div>
     );

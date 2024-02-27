@@ -1,9 +1,11 @@
+
 import React, { lazy } from 'react';
 
+// const file = lazy(() => import('../../public/assets/excel_file/'));
 const Index = lazy(() => import('../pages/Index'));
 const Profile = lazy(() => import('../pages/Users/Profile'));
 const LoginCover = lazy(() => import('../pages/Authentication/LoginCover'));
-const Customers = lazy(() => import('../pages/Relationship/Customers/index'));
+const Customers = lazy(() => import('../pages/Relationship/Customers//index'));
 const CustomersAdd = lazy(() => import('../pages/Relationship/Customers/components/AddCustomers'));
 const CustomersEdit = lazy(() => import('../pages/Relationship/Customers/components/EditCustomers'));
 const Suppliers = lazy(() => import('../pages/Relationship/Suppliers/index'));
@@ -38,7 +40,7 @@ const Costing = lazy(() => import('../pages/GeneralSettings/Costing/index'));
 const CostingEdit = lazy(() => import('../pages/GeneralSettings/Costing/components/EditCosting'));
 const CustomHouse = lazy(() => import('../pages/GeneralSettings/CustomHouse/index'));
 const CustomHouseAdd = lazy(() => import('../pages/GeneralSettings/CustomHouse/components/AddCustomHouse'));
-const CustomHouseEdit = lazy(() => import('../pages/GeneralSettings/CustomHouse/components/EditCustomHouse'));;
+const CustomHouseEdit = lazy(() => import('../pages/GeneralSettings/CustomHouse/components/EditCustomHouse'));
 const HsCode = lazy(() => import('../pages/GeneralSettings/HsCode/index'));
 const CpcCode = lazy(() => import('../pages/GeneralSettings/CpcCode/index'));
 const CpcAdd = lazy(() => import('../pages/GeneralSettings/CpcCode/components/AddCpc'));
@@ -59,6 +61,7 @@ const IssueVDSAdd = lazy(() => import('../pages/Production/Procurement/Purchase/
 
 const ProductionBOM = lazy(() => import('../pages/Production/ProductionBOM/index'));
 const ProductionBOMAdd = lazy(() => import('../pages/Production/ProductionBOM/components/AddProductionBOM'));
+const ProductionBOMMushuk = lazy(() => import('../pages/Production/ProductionBOM/components/ProductionBomMushuk'));
 const ProductionBOMTable = lazy(() => import('../pages/Production/ProductionBOM/components/TableProductionBOM'));
 const ProductionWIP = lazy(() => import('../pages/Production/ProductionWIP/index'));
 const ProductionWIPAdd = lazy(() => import('../pages/Production/ProductionWIP/components/AddProductionWIP'));
@@ -73,6 +76,12 @@ const CreditNote = lazy(() => import('../pages/Production/Sales/CreditNote/index
 const CreditNoteAdd = lazy(() => import('../pages/Production/Sales/CreditNote/components/AddCreditNote'));
 const ReceiveVDS = lazy(() => import('../pages/Production/Sales/ReceiveVDS/index'));
 const ReceiveVDSAdd = lazy(() => import('../pages/Production/Sales/ReceiveVDS/components/AddReceiveVds'));
+const GeneralMushak = lazy(() => import('../pages/Report/Production/index'));
+const GeneralMushak62 = lazy(() => import('../pages/Report/Production/GeneralMushak62/index'));
+const GeneralMushak62View = lazy(() => import('../pages/Report/Production/GeneralMushak62/components/ViewTable'));
+const GeneralMushak61 = lazy(() => import('../pages/Report/Production/GeneralMushak61/index'));
+
+
 
 
 const routes = [
@@ -84,6 +93,11 @@ const routes = [
     {
         path: '/pages/sales/local_sales/mushuk63',
         element: <LocalSalesMushuk />,
+        layout: 'blank',
+    },
+    {
+        path: '/pages/sales/production_BOM/mushuk43',
+        element: <ProductionBOMMushuk />,
         layout: 'blank',
     },
     {
@@ -99,7 +113,7 @@ const routes = [
         element: <CustomersAdd />,
     },
     {
-        path: '/pages/relationship/customers/edit',
+        path: '/pages/relationship/customers/edit/:id',
         element: <CustomersEdit />,
     },
     {
@@ -111,7 +125,7 @@ const routes = [
         element: <SuppliersAdd />,
     },
     {
-        path: '/pages/relationship/suppliers/edit',
+        path: '/pages/relationship/suppliers/edit/:id',
         element: <SuppliersEdit />,
     },
     {
@@ -266,6 +280,23 @@ const routes = [
         element: <ReceiveVDSAdd />,
     },
     {
+        path: '/pages/report/production/index',
+        element: <GeneralMushak />,
+    },
+    {
+        path: '/pages/report/production/generate_mushak61',
+        element: <GeneralMushak61 />,
+    },
+    {
+        path: '/pages/report/production/generate_mushak62',
+        element: <GeneralMushak62 />,
+    },
+    {
+        path: '/pages/report/production/generate_mushak62/view',
+        element: <GeneralMushak62View />,
+        layout: 'blank',
+    },
+    {
         path: '/pages/settings/Company_Settings',
         element: <CompanySettings />,
     },
@@ -277,12 +308,8 @@ const routes = [
         path: '/pages/settings/authorised_person/add',
         element: <AuthorisedPersonAdd />,
     },
-    // {
-    //     path: '/pages/settings/authorised_person/add',
-    //     element: <AuthorisedPersonAdd />,
-    // },
     {
-        path: '/pages/settings/authorised_person/edit',
+        path: '/pages/settings/authorised_person/edit/:id',
         element: <AuthorisedPersonEdit />,
     },
     {
@@ -302,7 +329,7 @@ const routes = [
         element: <Costing />,
     },
     {
-        path: '/pages/settings/costing/edit',
+        path: '/pages/settings/costing/edit/:id',
         element: <CostingEdit />,
     },
     {
@@ -314,14 +341,13 @@ const routes = [
         element: <CustomHouseAdd />,
     },
     {
-        path: '/pages/settings/custom_house/edit',
+        path: '/pages/settings/custom_house/edit/:id',
         element: <CustomHouseEdit />,
     },
     {
         path: '/pages/hscode/list',
         element: <HsCode />,
     },
-
     {
         path: '/pages/cpccode/list',
         element: <CpcCode />,

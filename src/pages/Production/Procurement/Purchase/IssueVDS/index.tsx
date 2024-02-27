@@ -5,7 +5,7 @@ import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import sortBy from 'lodash/sortBy';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../../../store/themeConfigSlice';
-import IconPlus from '../../../../../components/Icon/IconPlus';
+import IconPlus from '../../../../components/Icon/IconPlus';
 import axios from 'axios';
 
 
@@ -26,7 +26,7 @@ const index = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Issue VDS Table'));
+        dispatch(setPageTitle('Export Table'));
     });
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
@@ -102,7 +102,7 @@ const index = () => {
             <div className="panel flex items-center justify-between flex-wrap gap-4 text-black">
                 <h2 className="text-xl font-bold">VDS</h2>
                 <div className="flex items-https://www.sqcables.bmitvat.com/Production_sales_creditnote/AddcreditNotecenter flex-wrap gap-3">
-                    <Link to="/pages/procurment/purchase/debit_note/add" className="btn btn-primary gap-1">
+                    <Link to="/pages/procurment/purchase/issue_vds/add" className="btn btn-primary gap-1">
                         <IconPlus />
                         Add New
                     </Link>

@@ -13,11 +13,6 @@ import { number } from 'yup';
 
 
 const AddLocalPurchase: React.FC = () => {
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Local Purchase Table'));
-    });
     const navigate = useNavigate();
 
 

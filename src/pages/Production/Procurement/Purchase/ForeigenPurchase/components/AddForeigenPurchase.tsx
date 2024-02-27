@@ -10,25 +10,25 @@ import sortBy from 'lodash/sortBy';
 import axios from 'axios';
 
 
-const rowData = [
-    {
-        description: '',
-        quantity: '',
-        rate: '',
-        value: '',
-        sd: '',
-        sdBDT: '',
-        vatableValue: '',
-        vatType: '',
-        vat: '',
-        vatBDT: '',
-        vds: '',
-        rebate: '',
-        action: '',
-    },
-];
+// const rowData = [
+//     {
+//         description: '',
+//         quantity: '',
+//         rate: '',
+//         value: '',
+//         sd: '',
+//         sdBDT: '',
+//         vatableValue: '',
+//         vatType: '',
+//         vat: '',
+//         vatBDT: '',
+//         vds: '',
+//         rebate: '',
+//         action: '',
+//     },
+// ];
 
-const col = ['description', 'quantity', 'rate', 'value', 'sd', 'sdBDT', 'vatableValue', 'vatType', 'vat', 'vatBDT', 'vds', 'rebate', '', ''];
+// const col = ['description', 'quantity', 'rate', 'value', 'sd', 'sdBDT', 'vatableValue', 'vatType', 'vat', 'vatBDT', 'vds', 'rebate', '', ''];
 
 
 const AddForeigenPurchase = () => {

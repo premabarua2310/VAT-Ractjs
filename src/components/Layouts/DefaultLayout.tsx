@@ -9,6 +9,7 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import Portals from '../../components/Portals';
 
+
 const DefaultLayout = ({ children }: PropsWithChildren) => {
     const themeConfig = useSelector((state: IRootState) => state.themeConfig);
     const dispatch = useDispatch();

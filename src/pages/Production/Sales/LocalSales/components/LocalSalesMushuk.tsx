@@ -1,20 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { setPageTitle } from '../../../../../store/themeConfigSlice';
 import IconFile from '../../../../../components/Icon/IconFile';
+import logo from '../../../../../assets/images/govt.png';
 // import * as $ from 'jquery';
 import { number } from 'yup';
 
 
 const LocalSalesMushuk: React.FC = () => {
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Local Sales Mushuk'));
-    });
-
     const navigate = useNavigate();
 
     // Function to get today's date in the format "YYYY-MM-DD"
@@ -62,15 +55,15 @@ const LocalSalesMushuk: React.FC = () => {
         <div className='p-1'>
             <div className="items-center justify-between flex-wrap text-black m-6 grid grid-cols-3 gap-4">
                 <div>
-                    <img className="object-none object-centerw-24 h-24" src="..." />
+                    <img className="h-20 w-20" src={logo} />
                 </div>
-                <div className="font-bold text-center grid grid-rows-2 grid-flow-col gap-4">
+                <div className="font-bold text-center grid grid-rows-2 grid-flow-col gap-4 pt-8">
                     <h3 className='text-xl'>গনপ্রজাতন্ত্রী বাংলাদেশ সরকার</h3>
                     <h3>জাতীয় রাজস্ব বোর্ড</h3>
                 </div>
                 <div>
                     <button type="submit" className="btn btn-success gap-2 float-right" >
-                        <IconFile className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
+                        <IconFile className="w-5 h-5 ltr:mr-1 rtl:ml-1" />
                         PDF Copy
                     </button>
                 </div>

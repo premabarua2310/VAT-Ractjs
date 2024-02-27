@@ -1,7 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setPageTitle } from '../../../../../../store/themeConfigSlice';
+import { useState } from 'react';
 import IconFile from '../../../../../components/Icon/IconFile';
 import IconTrashLines from '../../../../../components/Icon/IconTrashLines';
 import TableServicePurchase from './tableServicePurchase';
@@ -10,11 +8,6 @@ import TableServicePurchase from './tableServicePurchase';
 const AddServicePurchase = () => {
 
     const [date, setDate] = useState();
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Authorised Person Table'));
-    });
 
     return (
         <div>

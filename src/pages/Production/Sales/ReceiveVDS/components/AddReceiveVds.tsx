@@ -1,8 +1,9 @@
-import React, { ChangeEventHandler } from 'react';
+import React, { ChangeEvent, ChangeEventHandler } from 'react';
 import { useEffect, useState, useRef } from 'react';
 import IconFile from '../../../../../components/Icon/IconFile';
 import IconTrashLines from '../../../../../components/Icon/IconTrashLines';
-import { useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from '../../../../../store/themeConfigSlice';
 import sortBy from 'lodash/sortBy';
@@ -11,14 +12,9 @@ import axios from 'axios';
 import { number } from 'yup';
 
 
-const AddLocalPurchase: React.FC = () => {
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Receive VDS Add'));
-    });
-
+const AddReceiveVds: React.FC = () => {
     const navigate = useNavigate();
+
 
     // Function to get today's date in the format "YYYY-MM-DD"
     const getTodayDate = () => {
@@ -57,11 +53,10 @@ const AddLocalPurchase: React.FC = () => {
     const [SuppAddress, setAddress] = useState("");
 
     const [supplier, setSupplier] = useState("");
-    const [supplierAddress, setSupplierAdd] = useState("");
+    // const [supplierAddress, setSupplierAdd] = useState("");
     const [entryDate, setEntryDate] = useState("");
-    const [chalanNo, setChalanNo] = useState("");
+    const [vdsCertificate, setVdsCertificate] = useState("");
     const [receivedDate, setReceivedDate] = useState("");
-    const [fiscalYear, setFiscalYear] = useState("");
 
     const [note, setNote] = useState('');
     const [totalAmount, setTotalAmount] = useState('');
@@ -654,9 +649,8 @@ const AddLocalPurchase: React.FC = () => {
             const purchase = {
                 supplierId: supplier,
                 entryDate: entryDate,
-                chalanNumber: chalanNo,
+                vdsCertificate: vdsCertificate,
                 receivedDate: receivedDate,
-                fiscalYear: fiscalYear,
                 purchaseItems: arrayData,
                 totalTax: Vat,
                 totalSd: SD,
@@ -716,7 +710,7 @@ const AddLocalPurchase: React.FC = () => {
                                     </div>
                                     <div>
                                         <label htmlFor="browserLname">VDS Certificate No</label>
-                                        <input id="browserLname" type="text" value={SuppAddress} className="form-input" onChange={(e) => setSupplierAdd(e.target.value)} required />
+                                        <input id="browserLname" type="text" value={SuppAddress} className="form-input" onChange={(e) => setVdsCertificate(e.target.value)} required />
                                     </div>
                                     <div>
                                         <label htmlFor="browserLname">Received Date</label>
@@ -790,6 +784,6 @@ const AddLocalPurchase: React.FC = () => {
     );
 };
 
-export default AddLocalPurchase;
+export default AddReceiveVds;
 
 

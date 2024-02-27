@@ -13,11 +13,6 @@ import { number } from 'yup';
 
 
 const AddDebitNote: React.FC = () => {
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Debit Note Add'));
-    });
     const navigate = useNavigate();
 
 

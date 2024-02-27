@@ -13,12 +13,6 @@ import { number } from 'yup';
 
 
 const AddIssueVds: React.FC = () => {
-
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Issue VDS Add'));
-    });
-
     const navigate = useNavigate();
 
 
